@@ -1,0 +1,21 @@
+#! /bin/bash
+webRtmToAgora(){
+    sed -i 's/"any key":.*/"any key":true/g' config.json
+}
+webRtmToSlef(){
+     sed -i 's/"any key":.*/"any key":false/g' config.json
+}
+
+echo "[1]:web rtm to agora
+[2]:web rtm to self
+"
+
+read -p "enter your choice:" choice
+echo choice $choice
+case $choice in
+    1)
+        webRtmToAgora
+    ;;
+    2) webRtmToSelf;;
+    *) echo "choice is not support";;
+esac
