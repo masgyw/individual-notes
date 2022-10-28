@@ -13,7 +13,7 @@ git config --global core.autocrlf false
 git config --global credential.helper store/cache
 - git pull 输入密码后，会在用户目录下生成 .git-credentials文件，之后就免密
 4. 修改远程分支 url
-git remote set-url origin git@github.com:*.git
+git remote set-url origin git@github.com\:\\*.git
 5. 文件名过长  
 全局修改：git config --global core.longpaths true  
 本项目：git config core.longpaths true

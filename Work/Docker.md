@@ -54,6 +54,20 @@ vi /etc/resolv.conf
 nameserver 8.8.8.8  
 nameserver 8.8.8.4
 
+---
+HCE 华为云 安装docker
+wget https://repo.huaweicloud.com/repository/conf/openeuler_x86_64.repo -O /etc/yum.repos.d/openEuler.repo
+yum clean all
+yum makecache
+yum -y install docker
+
+## 配置Docker镜像加速器
+vi /etc/docker/daemon.json
+{"registry-mirrors":["https://2lqq34jg.mirror.aliyuncs.com"]}
+systemctl daemon-reload
+systemctl restart docker
+docker info
+
 ## 二、Docker 使用
 参考：https://docs.docker.com/engine/reference/commandline/  
 ### 2.1 基本使用命令
