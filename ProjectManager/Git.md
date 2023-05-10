@@ -70,3 +70,5 @@ git reset --soft HEAD~2 取消上2次的commit
 –hard
 删除工作空间的改动代码，撤销commit且撤销add
 
+### 2.7 删除本地分支
+git branch -d {BranchName}
