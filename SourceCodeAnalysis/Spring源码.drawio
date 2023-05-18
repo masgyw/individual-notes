@@ -1,0 +1,66 @@
+<mxfile host="Electron" modified="2023-05-18T15:08:51.948Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.1.2 Chrome/106.0.5249.199 Electron/21.4.3 Safari/537.36" etag="n7jc2qZWEjLfngn4zoo_" version="21.1.2" type="device">
+  <diagram name="第 1 页" id="Q3yEySlgmaNKFeRueKEK">
+    <mxGraphModel dx="1026" dy="743" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#ffffff" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="93BXLAmlQXDRcC2UiOlw-1" value="SpringIOC" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="320" y="90" width="500" height="510" as="geometry" />
+        </mxCell>
+        <mxCell id="zv4eL0YQtoWq20ydfIb3-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="93BXLAmlQXDRcC2UiOlw-1" source="zv4eL0YQtoWq20ydfIb3-3" target="zv4eL0YQtoWq20ydfIb3-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="zv4eL0YQtoWq20ydfIb3-3" value="BeanDefinition" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="93BXLAmlQXDRcC2UiOlw-1">
+          <mxGeometry x="34" y="430" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="zv4eL0YQtoWq20ydfIb3-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="93BXLAmlQXDRcC2UiOlw-1" source="zv4eL0YQtoWq20ydfIb3-6">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="540" y="80" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zv4eL0YQtoWq20ydfIb3-6" value="实例化&lt;br&gt;在内存中申请内存，属性值默认值" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="93BXLAmlQXDRcC2UiOlw-1">
+          <mxGeometry x="20" y="50" width="330" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="zv4eL0YQtoWq20ydfIb3-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.212;entryY=1.017;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="93BXLAmlQXDRcC2UiOlw-1" source="zv4eL0YQtoWq20ydfIb3-8" target="zv4eL0YQtoWq20ydfIb3-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="zv4eL0YQtoWq20ydfIb3-8" value="BeanFactoryPostProcessor" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="93BXLAmlQXDRcC2UiOlw-1">
+          <mxGeometry x="14" y="210" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="zv4eL0YQtoWq20ydfIb3-13" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="93BXLAmlQXDRcC2UiOlw-1">
+          <mxGeometry x="210" y="150" width="200" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="zv4eL0YQtoWq20ydfIb3-14" value="设置属性" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="93BXLAmlQXDRcC2UiOlw-1">
+          <mxGeometry x="280" y="180" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="zv4eL0YQtoWq20ydfIb3-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="93BXLAmlQXDRcC2UiOlw-2" target="93BXLAmlQXDRcC2UiOlw-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="93BXLAmlQXDRcC2UiOlw-2" value="XML" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="20" y="430" width="80" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="zv4eL0YQtoWq20ydfIb3-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="93BXLAmlQXDRcC2UiOlw-3" target="93BXLAmlQXDRcC2UiOlw-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="93BXLAmlQXDRcC2UiOlw-3" value="注解" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="20" y="510" width="80" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="zv4eL0YQtoWq20ydfIb3-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="93BXLAmlQXDRcC2UiOlw-4" target="zv4eL0YQtoWq20ydfIb3-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="93BXLAmlQXDRcC2UiOlw-4" value="XML&lt;br&gt;不同类型读取扩展" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="170" y="390" width="90" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="93BXLAmlQXDRcC2UiOlw-5" value="学习源码的方法&lt;br&gt;1/不要忽略源码里的注释&lt;br&gt;2 先梳理脉络，再抠细节&lt;br&gt;3、见明知意&lt;br&gt;4、大胆猜测，小心验证&lt;br&gt;5、善于使用插件：翻译插件&lt;br&gt;6、坚持" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="20" y="20" width="170" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="zv4eL0YQtoWq20ydfIb3-4" value="&lt;pre style=&quot;font-family: &amp;quot;JetBrains Mono&amp;quot;, monospace; font-size: 9.8pt;&quot;&gt;BeanDefinitionReader&lt;/pre&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=default;labelBackgroundColor=default;" vertex="1" parent="1">
+          <mxGeometry x="140" y="340" width="175" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="zv4eL0YQtoWq20ydfIb3-12" value="&lt;pre style=&quot;font-family: &amp;quot;JetBrains Mono&amp;quot;, monospace; font-size: 9.8pt;&quot;&gt;createBeanInstance&lt;/pre&gt;&lt;pre style=&quot;font-family: &amp;quot;JetBrains Mono&amp;quot;, monospace; font-size: 9.8pt;&quot;&gt;反射&lt;/pre&gt;" style="rounded=0;whiteSpace=wrap;html=1;labelBackgroundColor=none;fontColor=default;" vertex="1" parent="1">
+          <mxGeometry x="860" y="140" width="200" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,127 @@
+{
+    "root": {
+        "data": {
+            "id": "cn8hy7i95wg0",
+            "created": 1664415209473,
+            "text": "Java设计模式及实践"
+        },
+        "children": [
+            {
+                "data": {
+                    "id": "cn8i0ts597k0",
+                    "created": 1664415414688,
+                    "text": "响应式编程"
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "cn8i17hgi0w0",
+                            "created": 1664415444517,
+                            "text": "四大关键"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cn8i1ebulj40",
+                                    "created": 1664415459415,
+                                    "text": "响应式"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cn8i1w5rn9c0",
+                                    "created": 1664415498231,
+                                    "text": "弹性"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cn8i28ly52w0",
+                                    "created": 1664415525330,
+                                    "text": "柔性"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cn8i2ftr7940",
+                                    "created": 1664415541039,
+                                    "text": "消息驱动"
+                                },
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "cn8hyfn1qoo0",
+                    "created": 1664415227177,
+                    "text": "响应式设计模式",
+                    "layout_mind_offset": {
+                        "x": 594,
+                        "y": 81
+                    }
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "cncsiyrtou80",
+                            "created": 1664851287035,
+                            "text": "响应模式",
+                            "expandState": "expand"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cn8hyzy1d000",
+                                    "created": 1664415271377,
+                                    "text": "异步通信模式"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cncsgt705s80",
+                                    "created": 1664851118162,
+                                    "text": "缓存模式"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cncsgyt5rlc0",
+                                    "created": 1664851130386,
+                                    "text": "扇出与最快响应模式"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cncsk2wen2w0",
+                                    "created": 1664851374382,
+                                    "text": "快速失败模式"
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "cncsjb8g9yg0",
+                            "created": 1664851314160,
+                            "text": "弹性模式"
+                        },
+                        "children": []
+                    }
+                ]
+            }
+        ]
+    },
+    "template": "filetree",
+    "theme": "fresh-blue",
+    "version": "1.4.43"
+}
