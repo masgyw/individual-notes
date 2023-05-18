@@ -1,13 +1,26 @@
-
-***
-目录  
-[Docker安装](#Docker安装)  
-[安装Elasticsearch](#安装Elasticsearch)
-
-***
 # Docker
 
-## 一、Linux 安装Docker
+***
+- [Docker](#docker)
+  - [一、安装Docker](#一安装docker)
+    - [1、Linux 环境](#1linux-环境)
+    - [2、配置](#2配置)
+  - [二、Docker 使用](#二docker-使用)
+    - [2.1 基本使用命令](#21-基本使用命令)
+    - [2.4 Docker 生成镜像](#24-docker-生成镜像)
+  - [三、Docker安装应用](#三docker安装应用)
+    - [1、搭建 mysql 服务](#1搭建-mysql-服务)
+    - [2、搭建 redis 服务](#2搭建-redis-服务)
+    - [3、安装Elasticsearch](#3安装elasticsearch)
+    - [4、安装nginx](#4安装nginx)
+    - [5、安装nacos](#5安装nacos)
+    - [6、安装rocketmq](#6安装rocketmq)
+    - [7、安装nodejs](#7安装nodejs)
+
+***
+
+## 一、安装Docker
+### 1、Linux 环境
 参考：https://www.cnblogs.com/caoweixiong/p/12186736.html
 1. 查看内核版本：uname -r  
 2. 准备：  
@@ -23,53 +36,46 @@ yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/d
 yum makecache fast  
 7. 列出docker 版本：
 yum list docker-ce.x86_64  --showduplicates | sort -r
-8. 安装Centos7 
+8. Centos7 安装 
 yum install docker-ce-19.03.9 docker-ce-cli-19.03.9 containerd.io
-9. 安装Centos8
+9. Centos8 安装
 yum install -y https://mirrors.aliyun.com/docker-ce/linux/centos/7/x86_64/edge/Packages/containerd.io-1.2.13-3.2.el7.x86_64.rpm
 10. 安装docker ce  
 yum install docker-ce docker-ce-cli containerd.io
+11. 华为云系统 HCE（Euler OS）
+    ```shell
+    wget https://repo.huaweicloud.com/repository/conf/openeuler_x86_64.repo -O /etc/yum.repos.d/openEuler.repo
+    yum clean all
+    yum makecache
+    yum -y install docker
+    ```
 
-配置
-
-启动  
+### 2、配置
+- 启动  
 systemctl start docker
-
-修改中国镜像：  
+- 修改中国镜像：  
 改用中国的 docker 镜像仓库  
 阿里云镜像  
 修改/etc/docker/daemon.json文件添加：  
-```
-{
-  "registry-mirrors": ["https://6kx4zyno.mirror.aliyuncs.com"]
-}
-```
-https://hub-mirror.c.163.com  
-重启  
+  ```
+  {"registry-mirrors":["https://6kx4zyno.mirror.aliyuncs.com"]}
+  or
+  {"registry-mirrors":["https://2lqq34jg.mirror.aliyuncs.com"]}
+  or
+  https://hub-mirror.c.163.com
+  ```
+- 重启  
 systemctl daemon-reload     #重启加速配置文件  
 systemctl restart docker    #重启docker后台服务
-
-修改DNS  
+- 修改DNS  
 vi /etc/resolv.conf  
 nameserver 8.8.8.8  
 nameserver 8.8.8.4
-
----
-HCE 华为云 安装docker
-wget https://repo.huaweicloud.com/repository/conf/openeuler_x86_64.repo -O /etc/yum.repos.d/openEuler.repo
-yum clean all
-yum makecache
-yum -y install docker
-
-## 配置Docker镜像加速器
-vi /etc/docker/daemon.json
-{"registry-mirrors":["https://2lqq34jg.mirror.aliyuncs.com"]}
-systemctl daemon-reload
-systemctl restart docker
-docker info
+- 查看docker信息
+  docker info
 
 ## 二、Docker 使用
-参考：https://docs.docker.com/engine/reference/commandline/  
+- 参考：https://docs.docker.com/engine/reference/commandline/  
 ### 2.1 基本使用命令
 1. 查看版本  docker version  
 2. 查看docker日志  cat /var/log/docker  
@@ -88,37 +94,6 @@ docker images | grep image | awk '{print $3}' | xargs docker rmi
 docker rm -f $(docker ps -a | grep "imsage-name" | awk '{print $1}')
 13. 查看容器运行日志
 
-
-### 2.2 搭建 mysql 服务
-docker pull mysql:5.7   # 拉取 mysql 5.7  
-docker pull mysql       # 拉取最新版mysql镜像  
-sudo docker run -p 3306:3306 --name mysql -e MYSQL_ROOT_PASSWORD=root -d mysql:5.7  
-–name：容器名，此处命名为mysql  
--e：配置信息，此处配置mysql的root用户的登陆密码  
--p：端口映射，此处映射 主机3306端口 到 容器的3306端口  
-查看容器是否运行  
-docker container ls  
-docker本地连接mysql客户端  
-docker exec -it mysql bash  
-mysql -uroot -proot  
-
-数据和配置外置
-1. 进入容器
-docker exec -it mysql5.7 /bin/bash
-2. 查看配置
-cat /etc/mysql/my.cnf
-3. 在容器外创建同名文件
-4. 停止mysql 并删除容器
-docker stop mysql5.7 && docker rm mysql5.7
-5. 在本地创建挂载目录
-mkdir -p /opt/mysql/data
-6. 重新创建容器
-docker run --name mysql5.7 --restart always --privileged=true -p 4306:3306 -v /opt/mysql/config/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf -v /opt/mysql/data:/var/lib/mysql -e MYSQL_USER="fengwei" -e MYSQL_PASSWORD="pwd123" -e MYSQL_ROOT_PASSWORD="rootpwd123" -d mysql:5.7
-
-### 2.3 搭建 redis 服务
-docker pull redis  
-sudo docker run -p 6379:6379 --name redis -d redis
-
 ### 2.4 Docker 生成镜像
 - 构建Docker镜像，用于运行，Docker构建镜像的两种方法：  
 1.使用docker commit 命令；  
@@ -128,7 +103,38 @@ sudo docker run -p 6379:6379 --name redis -d redis
 - 运行  
 docker run -d -p 28080:8080 --name {name} -itv /home/root/softwares/:/mnt/software/ {containerId} /bin/bash  
 
-### 2.5 安装Elasticsearch
+
+## 三、Docker安装应用
+### 1、搭建 mysql 服务
+- docker pull mysql:5.7   # 拉取 mysql 5.7  
+- docker pull mysql       # 拉取最新版mysql镜像  
+- sudo docker run -p 3306:3306 --name mysql5.7 -e MYSQL_ROOT_PASSWORD=root -d mysql:5.7  
+  –name：容器名，此处命名为mysql  
+  -e：配置信息，此处配置mysql的root用户的登陆密码  
+  -p：端口映射，此处映射 主机3306端口 到 容器的3306端口  
+- 查看容器是否运行  
+docker container ls  
+- docker本地连接mysql客户端  
+docker exec -it mysql5.7 bash  
+mysql -uroot -proot  
+- 数据和配置外置
+  1. 进入容器
+  docker exec -it mysql5.7 /bin/bash
+  2. 查看配置
+  cat /etc/mysql/my.cnf
+  3. 在容器外创建同名文件
+  4. 停止mysql 并删除容器
+  docker stop mysql5.7 && docker rm mysql5.7
+  5. 在本地创建挂载目录
+  mkdir -p /opt/mysql/data
+  6. 重新创建容器
+  docker run --name mysql5.7 --restart always --privileged=true -p 4306:3306 -v /opt/mysql/config/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf -v /opt/mysql/data:/var/lib/mysql -e MYSQL_USER="" -e MYSQL_PASSWORD="" -e MYSQL_ROOT_PASSWORD="rootpwd" -d mysql:5.7
+
+### 2、搭建 redis 服务
+docker pull redis  
+sudo docker run -p 6379:6379 --name redis -d redis
+
+### 3、安装Elasticsearch
 - docker pull elasticsearch:5.5.0
 - docker run -d -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" -e ES_JAVA_OPTS="-Xms512m -Xmx512m" --name es5 elasticsearch:5.5.0  
 9300：集群节点指点的tcp通讯端口  
@@ -136,7 +142,7 @@ docker run -d -p 28080:8080 --name {name} -itv /home/root/softwares/:/mnt/softwa
 - 安装中文分词器
 ./bin/elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v7.10.1/elasticsearch-analysis-ik-7.10.1.zip
 
-### 2.6 安装nginx
+### 4、安装nginx
 1. docker pull nginx
   容器内
   日志位置：/var/log/nginx/
@@ -163,7 +169,7 @@ docker run -itd --name nginx -p 80:80 -p 443:443 -v /opt/docker/nginx/html:/usr/
 7. 修改配置文件重启
 dokcer exec -it nginx nginx -s reload
 
-### 2.7 安装nacos
+### 5、安装nacos
 1. docker pull nacos/nacos-server
 2. 挂载目录，用于映射到容器
 mkdir -p /data/nacos/logs/  
@@ -172,7 +178,7 @@ vim /data/nacos/init.d/custom.properties
 3. nacos url 访问
 http://127.0.0.1:8848/nacos
 
-### 2.8 安装rocketmq
+### 6、安装rocketmq
 1. 搭建网络
 docker network create rocketmq
 查看网络信息：
@@ -218,3 +224,18 @@ ping：ping rmqserver01
 8. 若是腾讯云需要开通端口9876和10911
 8. 浏览器访问控制台
 http://127.0.0.1:18088/
+
+### 7、安装nodejs
+wget https://npm.taobao.org/mirrors/node/v16.13.1/node-v16.13.1-linux-x64.tar.xz
+xz -d node-v16.13.1-linux-x64.tar.xz
+tar -xf node-v16.13.1-linux-x64.tar
+三：环境配置
+方法一：软链接方式（推荐）
+ln -s /opt/node-v16.13.1/bin/node /usr/local/bin/
+ln -s /opt/node-v16.13.1/bin/npm /usr/local/bin/
+ln -s /opt/node-v16.13.1/bin/npx /usr/local/bin/
+查看nodejs是否安装成功
+node -v
+npm -v
+npx -v
+成功输出版本号即完成
